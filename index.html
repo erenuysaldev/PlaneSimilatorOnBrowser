@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Basit Uçuş Simülatörü</title>
+  <style>
+    body { margin: 0; overflow: hidden; }
+    canvas { display: block; }
+  </style>
+</head>
+<body>
+  <!-- Login overlay -->
+  <div id="loginOverlay" style="position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); display:flex; align-items:center; justify-content:center; z-index:2;">
+    <div style="background:#fff; padding:20px; border-radius:5px; text-align:center;">
+      <h2>Oyuna Katıl</h2>
+      <input id="usernameInput" type="text" placeholder="Kullanıcı adınız" />
+      <button id="joinBtn">Katıl</button>
+    </div>
+  </div>
+  <!-- Kullanıcı listesi -->
+  <div id="userList" style="position:absolute; top:10px; right:10px; background:rgba(0,0,0,0.6); padding:10px; color:white; z-index:1;">
+    <b>Oyuncular:</b><br>
+  </div>
+  <!-- Three.js kütüphanesini CDN üzerinden yüklüyoruz -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <!-- GLTFLoader: harita ve uçak modellerini yüklemek için -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128/examples/js/loaders/GLTFLoader.js"></script>
+  <!-- Ana uygulama kodumuz -->
+  <script src="main.js"></script>
+</body>
+</html> 
