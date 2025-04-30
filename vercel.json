@@ -12,12 +12,21 @@
     {
       "src": "*.js",
       "use": "@vercel/static"
+    },
+    {
+      "src": "models/**/*",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
+    { "handle": "filesystem" },
     {
       "src": "/socket.io/(.*)",
       "dest": "server.js"
+    },
+    {
+      "src": "/",
+      "dest": "/index.html"
     },
     {
       "src": "/(.*)",
