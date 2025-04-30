@@ -5,7 +5,12 @@ const path = require('path');
 
 const app = express();
 const server = http.createServer(app);
-const io = socketIo(server);
+const io = socketIo(server, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"]
+  }
+});
 
 const players = {};
 
@@ -13,7 +18,13 @@ function getRandomColor() {
   return Math.random() * 0xffffff;
 }
 
-app.use(express.static(path.join(__dirname)));
+// Static dosyaları serve et
+app.use(express.static(__dirname));
+
+// Ana route için index.html'i gönder
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
 
 io.on('connection', (socket) => {
   const id = socket.id;
